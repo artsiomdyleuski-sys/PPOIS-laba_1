@@ -1,0 +1,101 @@
+\doxysection{Set Class Reference}
+\label{class_set}\index{Set@{Set}}
+Inheritance diagram for Set:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{class_set}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\label{class_set_a433f119f890b4dae2d995a8df96e3e91} 
+{\bfseries Set} (bool allow\+Dup)
+\item 
+\label{class_set_a571c5b37ce7bc2a4fe546289cdd53986} 
+{\bfseries Set} (const std::\+string \&str, bool allow\+Dup=false)
+\item 
+\label{class_set_a1cf24646271b309f8b2ba131f63f7e6d} 
+bool {\bfseries is\+Empty} () const
+\item 
+\label{class_set_a68c2ecf75b576a34fb4b23af2c184465} 
+std::\+size\+\_\+t {\bfseries cardinality} () const
+\item 
+\label{class_set_a78989599d850aa20978cca1bb3206643} 
+virtual void {\bfseries add} (const Element \&e)
+\item 
+\label{class_set_a5fde336c9e88342d9edf81edf45257b0} 
+virtual void {\bfseries remove} (const Element \&e)
+\item 
+\label{class_set_ac62bdc6d1a2ea4fbdc1e7992c4257c4d} 
+bool {\bfseries contains} (const Element \&e) const
+\item 
+\label{class_set_a7d06e7d1c3dd26a3f679310e19340465} 
+bool {\bfseries operator[$\,$]} (const Element \&e) const
+\item 
+\label{class_set_a5bd872af66ba7d8a885cda1619be0c60} 
+bool {\bfseries operator[$\,$]} (char c) const
+\item 
+\label{class_set_a2319ad4af40b84eabe2459b29aee998e} 
+\textbf{ Set} {\bfseries operator+} (const \textbf{ Set} \&other) const
+\item 
+\label{class_set_a45bda7548d4743614bd1663bcc12a218} 
+\textbf{ Set} {\bfseries operator$\ast$} (const \textbf{ Set} \&other) const
+\item 
+\label{class_set_a158d3f780877e79826543fe740d190c9} 
+\textbf{ Set} {\bfseries operator-\/} (const \textbf{ Set} \&other) const
+\item 
+\label{class_set_ad8d040cff9b55a2cb219b64194a4e2d5} 
+\textbf{ Set} \& {\bfseries operator+=} (const \textbf{ Set} \&other)
+\item 
+\label{class_set_ac78bb0d87da13a1c52ac4b87c3950165} 
+\textbf{ Set} \& {\bfseries operator$\ast$=} (const \textbf{ Set} \&other)
+\item 
+\label{class_set_a4db7202a84f1ee7266f5510c1994f97a} 
+\textbf{ Set} \& {\bfseries operator-\/=} (const \textbf{ Set} \&other)
+\item 
+\label{class_set_a2933b90af89f542bd331963400de5e36} 
+\textbf{ Set} {\bfseries power\+Set} () const
+\item 
+\label{class_set_a7f9ea45767da71c8948bf9084181a581} 
+std::\+string {\bfseries to\+String} () const
+\item 
+\label{class_set_a1853c01270c3e02e92e54cecb418ebb4} 
+bool {\bfseries equals} (const \textbf{ Set} \&other) const
+\item 
+\label{class_set_a84c404faca958ceb200303648162b8f9} 
+bool {\bfseries operator==} (const \textbf{ Set} \&other) const
+\item 
+\label{class_set_a042befd0edd17fcc2b3a25859ca44bbb} 
+bool {\bfseries operator!=} (const \textbf{ Set} \&other) const
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Protected Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\label{class_set_aef5b450b0e85a3711a0caf385f634f3d} 
+bool {\bfseries same\+Element} (const Element \&a, const Element \&b) const
+\item 
+\label{class_set_a91bef614fc7f1f7c73876989c9af2087} 
+void {\bfseries parse\+From\+String} (const std::\+string \&str)
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Protected Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\label{class_set_a1344814b908512421bfb41de335f8e40} 
+std::\+vector$<$ Element $>$ {\bfseries elements}
+\item 
+\label{class_set_a700e9d346547cf12dc1c666370a85234} 
+bool {\bfseries allow\+Duplicates}
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Friends}
+\begin{DoxyCompactItemize}
+\item 
+\label{class_set_a57f3efaed966ae821d80bb557d460406} 
+std::\+ostream \& {\bfseries operator$<$$<$} (std::\+ostream \&os, const \textbf{ Set} \&s)
+\end{DoxyCompactItemize}
+
+
+The documentation for this class was generated from the following files:\begin{DoxyCompactItemize}
+\item 
+Header.\+h\item 
+PPOIS laba\+\_\+1.\+cpp\end{DoxyCompactItemize}

@@ -1,0 +1,77 @@
+\doxysection{Cantor\+Set Class Reference}
+\label{class_cantor_set}\index{CantorSet@{CantorSet}}
+Inheritance diagram for Cantor\+Set:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{class_cantor_set}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\label{class_cantor_set_af00065df65fd75a8a402679d823107aa} 
+{\bfseries Cantor\+Set} (const std::\+string \&str)
+\end{DoxyCompactItemize}
+\doxysubsection*{Public Member Functions inherited from \textbf{ Set}}
+\begin{DoxyCompactItemize}
+\item 
+{\bfseries Set} (bool allow\+Dup)
+\item 
+{\bfseries Set} (const std::\+string \&str, bool allow\+Dup=false)
+\item 
+bool {\bfseries is\+Empty} () const
+\item 
+std::\+size\+\_\+t {\bfseries cardinality} () const
+\item 
+virtual void {\bfseries add} (const Element \&e)
+\item 
+virtual void {\bfseries remove} (const Element \&e)
+\item 
+bool {\bfseries contains} (const Element \&e) const
+\item 
+bool {\bfseries operator[$\,$]} (const Element \&e) const
+\item 
+bool {\bfseries operator[$\,$]} (char c) const
+\item 
+\textbf{ Set} {\bfseries operator+} (const \textbf{ Set} \&other) const
+\item 
+\textbf{ Set} {\bfseries operator$\ast$} (const \textbf{ Set} \&other) const
+\item 
+\textbf{ Set} {\bfseries operator-\/} (const \textbf{ Set} \&other) const
+\item 
+\textbf{ Set} \& {\bfseries operator+=} (const \textbf{ Set} \&other)
+\item 
+\textbf{ Set} \& {\bfseries operator$\ast$=} (const \textbf{ Set} \&other)
+\item 
+\textbf{ Set} \& {\bfseries operator-\/=} (const \textbf{ Set} \&other)
+\item 
+\textbf{ Set} {\bfseries power\+Set} () const
+\item 
+std::\+string {\bfseries to\+String} () const
+\item 
+bool {\bfseries equals} (const \textbf{ Set} \&other) const
+\item 
+bool {\bfseries operator==} (const \textbf{ Set} \&other) const
+\item 
+bool {\bfseries operator!=} (const \textbf{ Set} \&other) const
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Additional Inherited Members}
+\doxysubsection*{Protected Member Functions inherited from \textbf{ Set}}
+\begin{DoxyCompactItemize}
+\item 
+bool {\bfseries same\+Element} (const Element \&a, const Element \&b) const
+\item 
+void {\bfseries parse\+From\+String} (const std::\+string \&str)
+\end{DoxyCompactItemize}
+\doxysubsection*{Protected Attributes inherited from \textbf{ Set}}
+\begin{DoxyCompactItemize}
+\item 
+std::\+vector$<$ Element $>$ {\bfseries elements}
+\item 
+bool {\bfseries allow\+Duplicates}
+\end{DoxyCompactItemize}
+
+
+The documentation for this class was generated from the following file:\begin{DoxyCompactItemize}
+\item 
+Header.\+h\end{DoxyCompactItemize}

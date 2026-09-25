@@ -1,0 +1,87 @@
+\doxysection{Header.\+h}
+\label{_header_8h_source}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{comment}{//\ set.hpp}}
+\DoxyCodeLine{00002\ \textcolor{preprocessor}{\#pragma\ once}}
+\DoxyCodeLine{00003\ }
+\DoxyCodeLine{00004\ \textcolor{preprocessor}{\#include\ <iostream>}}
+\DoxyCodeLine{00005\ \textcolor{preprocessor}{\#include\ <string>}}
+\DoxyCodeLine{00006\ \textcolor{preprocessor}{\#include\ <vector>}}
+\DoxyCodeLine{00007\ \textcolor{preprocessor}{\#include\ <memory>}}
+\DoxyCodeLine{00008\ \textcolor{preprocessor}{\#include\ <variant>}}
+\DoxyCodeLine{00009\ \textcolor{preprocessor}{\#include\ <algorithm>}}
+\DoxyCodeLine{00010\ }
+\DoxyCodeLine{00011\ \textcolor{comment}{//\ Forward\ declaration}}
+\DoxyCodeLine{00012\ \textcolor{keyword}{class\ }Set;}
+\DoxyCodeLine{00013\ }
+\DoxyCodeLine{00014\ \textcolor{comment}{//\ An\ element\ can\ be\ a\ char\ (atom)\ or\ a\ nested\ Set}}
+\DoxyCodeLine{00015\ \textcolor{keyword}{using\ }Element\ =\ std::variant<char,\ std::shared\_ptr<Set>>;}
+\DoxyCodeLine{00016\ }
+\DoxyCodeLine{00017\ \textcolor{keyword}{class\ }Set\ \{}
+\DoxyCodeLine{00018\ \textcolor{keyword}{protected}:}
+\DoxyCodeLine{00019\ \ \ \ \ std::vector<Element>\ elements;\ \ \ \textcolor{comment}{//\ unordered\ storage}}
+\DoxyCodeLine{00020\ \ \ \ \ \textcolor{keywordtype}{bool}\ allowDuplicates;\ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ false\ -\/>\ Cantor\ set,\ true\ -\/>\ multiset}}
+\DoxyCodeLine{00021\ }
+\DoxyCodeLine{00022\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00023\ \ \ \ \ \textcolor{comment}{//\ -\/-\/-\/\ constructors\ -\/-\/-\/}}
+\DoxyCodeLine{00024\ \ \ \ \ Set();\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ empty\ set}}
+\DoxyCodeLine{00025\ \ \ \ \ \textcolor{keyword}{explicit}\ Set(\textcolor{keywordtype}{bool}\ allowDup);\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ empty\ set\ with\ flag}}
+\DoxyCodeLine{00026\ \ \ \ \ \textcolor{keyword}{explicit}\ Set(\textcolor{keyword}{const}\ std::string\&\ str,\ \textcolor{keywordtype}{bool}\ allowDup\ =\ \textcolor{keyword}{false});\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ build\ from\ string}}
+\DoxyCodeLine{00027\ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00028\ \ \ \ \ \textcolor{comment}{//\ -\/-\/-\/\ basic\ checks\ -\/-\/-\/}}
+\DoxyCodeLine{00029\ \ \ \ \ \textcolor{keywordtype}{bool}\ isEmpty()\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00030\ \ \ \ \ std::size\_t\ cardinality()\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00031\ }
+\DoxyCodeLine{00032\ \ \ \ \ \textcolor{comment}{//\ -\/-\/-\/\ modifications\ -\/-\/-\/}}
+\DoxyCodeLine{00033\ \ \ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ add(\textcolor{keyword}{const}\ Element\&\ e);\ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ add\ (respects\ flag)}}
+\DoxyCodeLine{00034\ \ \ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ remove(\textcolor{keyword}{const}\ Element\&\ e);\ \ \ \ \ \ \ \textcolor{comment}{//\ remove\ one\ /\ all\ matches}}
+\DoxyCodeLine{00035\ }
+\DoxyCodeLine{00036\ \ \ \ \ \textcolor{comment}{//\ -\/-\/-\/\ membership\ -\/-\/-\/}}
+\DoxyCodeLine{00037\ \ \ \ \ \textcolor{keywordtype}{bool}\ contains(\textcolor{keyword}{const}\ Element\&\ e)\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00038\ \ \ \ \ \textcolor{keywordtype}{bool}\ operator[](\textcolor{keyword}{const}\ Element\&\ e)\textcolor{keyword}{\ const\ }\{\ \textcolor{keywordflow}{return}\ contains(e);\ \}}
+\DoxyCodeLine{00039\ \ \ \ \ \textcolor{keywordtype}{bool}\ operator[](\textcolor{keywordtype}{char}\ c)\textcolor{keyword}{\ const\ }\{\ \textcolor{keywordflow}{return}\ contains(Element\{\ c\ \});\ \}}
+\DoxyCodeLine{00040\ }
+\DoxyCodeLine{00041\ \ \ \ \ \textcolor{comment}{//\ -\/-\/-\/\ set\ operations\ (return\ new\ Set)\ -\/-\/-\/}}
+\DoxyCodeLine{00042\ \ \ \ \ Set\ operator+(\textcolor{keyword}{const}\ Set\&\ other)\ \textcolor{keyword}{const};\ \ \ \ \ \ \ \textcolor{comment}{//\ union}}
+\DoxyCodeLine{00043\ \ \ \ \ Set\ operator*(\textcolor{keyword}{const}\ Set\&\ other)\ \textcolor{keyword}{const};\ \ \ \ \ \ \ \textcolor{comment}{//\ intersection}}
+\DoxyCodeLine{00044\ \ \ \ \ Set\ operator-\/(\textcolor{keyword}{const}\ Set\&\ other)\ \textcolor{keyword}{const};\ \ \ \ \ \ \ \textcolor{comment}{//\ difference}}
+\DoxyCodeLine{00045\ }
+\DoxyCodeLine{00046\ \ \ \ \ \textcolor{comment}{//\ -\/-\/-\/\ compound\ assignment\ -\/-\/-\/}}
+\DoxyCodeLine{00047\ \ \ \ \ Set\&\ operator+=(\textcolor{keyword}{const}\ Set\&\ other);}
+\DoxyCodeLine{00048\ \ \ \ \ Set\&\ operator*=(\textcolor{keyword}{const}\ Set\&\ other);}
+\DoxyCodeLine{00049\ \ \ \ \ Set\&\ operator-\/=(\textcolor{keyword}{const}\ Set\&\ other);}
+\DoxyCodeLine{00050\ }
+\DoxyCodeLine{00051\ \ \ \ \ \textcolor{comment}{//\ -\/-\/-\/\ power\ set\ -\/-\/-\/}}
+\DoxyCodeLine{00052\ \ \ \ \ Set\ powerSet()\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00053\ }
+\DoxyCodeLine{00054\ \ \ \ \ \textcolor{comment}{//\ -\/-\/-\/\ output\ -\/-\/-\/}}
+\DoxyCodeLine{00055\ \ \ \ \ std::string\ toString()\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00056\ \ \ \ \ \textcolor{keyword}{friend}\ std::ostream\&\ operator<<(std::ostream\&\ os,\ \textcolor{keyword}{const}\ Set\&\ s);}
+\DoxyCodeLine{00057\ }
+\DoxyCodeLine{00058\ \ \ \ \ \textcolor{comment}{//\ -\/-\/-\/\ equality\ (order-\/independent)\ -\/-\/-\/}}
+\DoxyCodeLine{00059\ \ \ \ \ \textcolor{keywordtype}{bool}\ equals(\textcolor{keyword}{const}\ Set\&\ other)\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00060\ \ \ \ \ \textcolor{keywordtype}{bool}\ operator==(\textcolor{keyword}{const}\ Set\&\ other)\textcolor{keyword}{\ const\ }\{\ \textcolor{keywordflow}{return}\ equals(other);\ \}}
+\DoxyCodeLine{00061\ \ \ \ \ \textcolor{keywordtype}{bool}\ operator!=(\textcolor{keyword}{const}\ Set\&\ other)\textcolor{keyword}{\ const\ }\{\ \textcolor{keywordflow}{return}\ !equals(other);\ \}}
+\DoxyCodeLine{00062\ }
+\DoxyCodeLine{00063\ \textcolor{keyword}{protected}:}
+\DoxyCodeLine{00064\ \ \ \ \ \textcolor{comment}{//\ helpers}}
+\DoxyCodeLine{00065\ \ \ \ \ \textcolor{keywordtype}{bool}\ sameElement(\textcolor{keyword}{const}\ Element\&\ a,\ \textcolor{keyword}{const}\ Element\&\ b)\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00066\ \ \ \ \ \textcolor{keywordtype}{void}\ parseFromString(\textcolor{keyword}{const}\ std::string\&\ str);}
+\DoxyCodeLine{00067\ \};}
+\DoxyCodeLine{00068\ }
+\DoxyCodeLine{00069\ \textcolor{comment}{//\ -\/-\/-\/-\/-\/-\/-\/-\/-\/-\/\ Unordered\ Cantor\ Set\ (no\ duplicates)\ -\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{00070\ \textcolor{keyword}{class\ }CantorSet\ :\ \textcolor{keyword}{public}\ Set\ \{}
+\DoxyCodeLine{00071\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00072\ \ \ \ \ CantorSet()\ :\ Set(\textcolor{keyword}{false})\ \{\}}
+\DoxyCodeLine{00073\ \ \ \ \ \textcolor{keyword}{explicit}\ CantorSet(\textcolor{keyword}{const}\ std::string\&\ str)\ :\ Set(str,\ \textcolor{keyword}{false})\ \{\}}
+\DoxyCodeLine{00074\ \ \ \ \ \textcolor{comment}{//\ inherit\ operations;\ they\ already\ use\ the\ flag}}
+\DoxyCodeLine{00075\ \};}
+\DoxyCodeLine{00076\ }
+\DoxyCodeLine{00077\ \textcolor{comment}{//\ -\/-\/-\/-\/-\/-\/-\/-\/-\/-\/\ Unordered\ Multiset\ (duplicates\ allowed)\ -\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{00078\ \textcolor{keyword}{class\ }MultiSet\ :\ \textcolor{keyword}{public}\ Set\ \{}
+\DoxyCodeLine{00079\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00080\ \ \ \ \ MultiSet()\ :\ Set(\textcolor{keyword}{true})\ \{\}}
+\DoxyCodeLine{00081\ \ \ \ \ \textcolor{keyword}{explicit}\ MultiSet(\textcolor{keyword}{const}\ std::string\&\ str)\ :\ Set(str,\ \textcolor{keyword}{true})\ \{\}}
+\DoxyCodeLine{00082\ \};}
+
+\end{DoxyCode}
